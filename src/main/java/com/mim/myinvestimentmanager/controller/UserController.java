@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mim.myinvestimentmanager.model.User;
+import com.mim.myinvestimentmanager.model.Usuario;
 import com.mim.myinvestimentmanager.service.interfaces.UserService;
 
 
@@ -26,22 +26,22 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    public ResponseEntity<User> save(@RequestBody User object){
+    public ResponseEntity<Usuario> save(@RequestBody Usuario object){
         return ResponseEntity.status(HttpStatus.CREATED).body(this.userService.save(object));
     }
 
     @GetMapping
-    public ResponseEntity<List<User>> listAll(){
+    public ResponseEntity<List<Usuario>> listAll(){
         return ResponseEntity.ok().body(this.userService.list());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<User> findById(@PathVariable Long id){
+    public ResponseEntity<Usuario> findById(@PathVariable Long id){
         return ResponseEntity.ok().body(this.userService.searchById(id));
     }
 
     @PutMapping
-    public ResponseEntity<User> update(@RequestBody User object) {
+    public ResponseEntity<Usuario> update(@RequestBody Usuario object) {
         return ResponseEntity.ok().body(this.userService.update(object));
     }
 

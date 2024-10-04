@@ -8,7 +8,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mim.myinvestimentmanager.model.User;
+import com.mim.myinvestimentmanager.model.Usuario;
 import com.mim.myinvestimentmanager.repository.UserRepository;
 import com.mim.myinvestimentmanager.service.interfaces.UserService;
 
@@ -21,18 +21,18 @@ public class UserServiceImpl implements UserService{
     private UserRepository userRepository;
 
     @Override
-    public User save(User object) {
+    public Usuario save(Usuario object) {
         return this.userRepository.save(object);
     }
 
     @Override
-    public List<User> list() {
+    public List<Usuario> list() {
         return this.userRepository.findAll();
     }
 
     @Override
-    public User searchById(Long id) {
-        Optional<User> user = this.userRepository.findById(id);
+    public Usuario searchById(Long id) {
+        Optional<Usuario> user = this.userRepository.findById(id);
 
         if (!user.isPresent()) {
             throw new EntityNotFoundException("O USUARIO COM ID " + id + " NÃO FOI ENCONTRADO.");
@@ -42,8 +42,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public User update(User object) {
-        User usuario = this.searchById(object.getId());
+    public Usuario update(Usuario object) {
+        Usuario usuario = this.searchById(object.getId());
 
         if (Objects.nonNull(object)) {
             BeanUtils.copyProperties(object, usuario);
@@ -62,7 +62,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public List<User> saveAll(List<User> list) {
+    public List<Usuario> saveAll(List<Usuario> list) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'saveAll'");
     }
